@@ -9,8 +9,17 @@
    <script type="text/javascript" src="js/jquery.scrolltab.js"></script>
    <script type="text/javascript">
       $(document).ready(function() {
-         $('.scrolltab').scrolltab();
-         $('.test2').scrolltab({classname: 'scrolltab-item1'});
+         // Have all scroll tabs expand on mouseover and detract on mouseleave
+         $('.scrolltab').scrolltab({
+            hoverin: function() { 
+               $(this).animate({width: '200px'}, 500);
+            }, 
+            hoverout: function() { 
+               $(this).animate({width: '50px'}, 500);
+            } 
+         });
+         // Change three of the pins to a specific classname (instead of the default)
+         $('.test2').scrolltab({classname: 'scrolltab-item1', title: 'Green'});
          $('.test3').scrolltab({classname: 'scrolltab-item2'});
          $('.test4').scrolltab({classname: 'scrolltab-item3'});
       });
