@@ -33,36 +33,89 @@
          scrolltab: function(options) {
             var defaults = {
                title: '',
-               tab_class: 'scrolltab-item'
+               classname: 'scrolltab-item'
             }
             var options = $.extend(defaults, options);
+            
+            var data = {
+               body: 0
+            }
             
             return this.each(function(index) {
                var obj = $(this);
 
+               data.body = $('body').height();
+
+               // Create the pin and position
                var pin = $('<div/>')
-                  .attr('id', 'scrolltab'+index)
-                  .attr('class', options.tab_class)
+                  .attr('class', options.classname)
                   .css('position', 'fixed')
                   .css('right', 0)
-                  .css('visibility', 'hidden');
                   
                // Append to dom so we can calculate object height.
                $('body').append(pin);
                
-               var pos = obj.offset().top / $('body').height() * $(window).height() + pin.height();
+               // Calculate scroll bar position for this element
+               var pos = calc(obj, pin);
                
-               pin.css('top', pos).css('visibility', 'visible')
+               
+               // Attach click action (scroll)
+               pin.css('top', pos)
                   .hide()
                   .click(function() {
                      $('html,body').animate({scrollTop: obj.offset().top+"px"}, 1000);
                      return false;
                   })
                   .css('cursor', 'pointer')
-                  
-               $('body').append(pin);
-               setTimeout(function() {$('.'+options.tab_class).fadeIn('slow')}, 1000);
+               
+               // Fade in the tabs after 1 second   
+               setTimeout(function() { pin.fadeIn('slow'); console.log(pin.attr('class'));}, 1000);
+               
+               // Handle window size and dom changes
+               $(window).resize(function() { update(obj, pin); });
+               
+               // Scan for changes to the height of the body (dom element removal).
+               setInterval(function() {
+                  if(isResizable())
+                     update(obj, pin);
+                     data.body = $('body').height();
+               }, 1000);
             });
+            
+            /**
+             * Updates the positions of each scroll pin.  If the object of the scroll
+             * pin is no longer within the visible dom, the corresponding pin is removed.
+             * 
+             * @param jQuery object - Object of the scroll pin
+             * @param jQuery pin - Pin object
+             * @return void
+             */
+            function update(object, pin) {
+               if(object.parents().length == 0)
+                  setTimeout(function() { pin.remove(); }, 1000);
+               else
+                  setTimeout(function() { pin.animate({top: calc(object, pin)}); }, 1000);
+            }
+            
+            /**
+             * Calculates the vertical position of the main object to pin for scrolling.
+             * 
+             * @param jQuery object - Object of the scroll pin
+             * @param jQuery pin - Pin object
+             * @return float Vertical position result
+             */
+            function calc(object, pin) {
+               return object.offset().top / $('body').height() * $(window).height() + (pin.height() / 2);
+            }
+            
+            /**
+             * Returns true if the pin positions need to be adjusted.
+             * 
+             * @return boolean
+             */
+            function isResizable() {
+               return $('body').height() != data.body;
+            }
          }
    });
 })(jQuery);
