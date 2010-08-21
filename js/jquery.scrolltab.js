@@ -69,7 +69,7 @@
                   .css('cursor', 'pointer')
                
                // Fade in the tabs after 1 second   
-               setTimeout(function() { pin.fadeIn('slow'); console.log(pin.attr('class'));}, 1000);
+               setTimeout(function() { pin.fadeIn('slow'); }, 1000);
                
                // Handle window size and dom changes
                $(window).resize(function() { update(obj, pin); });
