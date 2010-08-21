@@ -50,7 +50,7 @@
                // Append to dom so we can calculate object height.
                $('body').append(pin);
                
-               var pos = obj.offset().top / $('body').height() * $(window).height() + pin.height()/2;
+               var pos = obj.offset().top / $('body').height() * $(window).height() + pin.height();
                
                pin.css('top', pos).css('visibility', 'visible')
                   .hide()
@@ -58,7 +58,6 @@
                      $('html,body').animate({scrollTop: obj.offset().top+"px"}, 1000);
                      return false;
                   })
-                  .css('color', 'white')
                   .css('cursor', 'pointer')
                   
                $('body').append(pin);
