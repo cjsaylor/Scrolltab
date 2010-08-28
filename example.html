@@ -10,26 +10,43 @@
    <script type="text/javascript">
       $(document).ready(function() {
          // Have all scroll tabs expand on mouseover and detract on mouseleave
-         $('.scrolltab').scrolltab({
-            hoverin: function() { 
-               $(this).stop().animate({width: '200px'}, 500);
-            }, 
-            hoverout: function() { 
-               $(this).stop().animate({width: '50px'}, 500);
-            } 
-         });
+         $('.scrolltab')
+            .click(function() {$(this).slideUp(); })
+            .scrolltab({
+               hoverin: function() { 
+                  $(this).stop().animate({width: '200px'}, 500);
+               }, 
+               hoverout: function() { 
+                  $(this).stop().animate({width: '50px'}, 500);
+               } 
+            });
          // Change three of the pins to a specific classname (instead of the default)
          $('.test2').scrolltab({classname: 'scrolltab-item1', title: 'Green'});
          $('.test3').scrolltab({classname: 'scrolltab-item2'});
          $('.test4').scrolltab({classname: 'scrolltab-item3'});
+         
+         // Options
+         $('#box-add').click(function() {
+            $('.container').append('<div class="scrolltab test5"/>');
+            $('.test5')
+               .click(function() {$(this).slideUp();})
+               .scrolltab({classname: 'scrolltab-item2', title: 'newbox'});
+            return false;
+         });
+         $('#box-showall').click(function() {
+            $('.scrolltab').slideDown();
+            return false;
+         });
       });
    </script>
    <style>
       body {background-color: #ccc}
+      #options {position: fixed; left: 5px; top: 0; background-color: white; border: 1px solid black; padding: 20px; }
       .test1 {height: 200px; background-color: blue; }
       .test2 {height: 2000px; background-color: green; }
       .test3 {height: 900px; background-color: purple; }
       .test4 {height: 300px; background-color: yellow; }
+      .test5 {height: 400px; background-color: purple; border-top: 3px solid white;}
       .container {width: 960px; margin: 0 auto}
    </style>
    <link rel="stylesheet" href="css/scrolltab.css" type="text/css"/>
@@ -38,6 +55,11 @@
    <div class="container">
       <div id="header">
          <h1>Scrolltab Demo</h1>
+      </div>
+      <div id="options">
+         <a href="#" id="box-add">Add Box</a><br/>
+         <a href="#" id="box-showall">Show All</a><br/>
+         <p>Click on a box to hide it.</p>
       </div>
       <div class="scrolltab test1"></div>
       <div class="scrolltab test2"></div>

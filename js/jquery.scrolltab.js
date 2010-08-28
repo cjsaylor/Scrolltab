@@ -15,6 +15,9 @@
  * the position indicated by the tab.  This tab is expandable with content 
  * within.
  * 
+ * The pins react to changes in the pinned object, dom structure/size,
+ * and the size of the window.
+ * 
  * ---------------------------------------------------------------------
  * Copyright (c) 2010 Chris Saylor
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -94,14 +97,9 @@
                // Fade in the tabs after 1 second   
                setTimeout(function() { pin.fadeIn('slow'); }, 1000);
                
-               // Handle window size and dom changes
-               $(window).resize(function() { update(obj, pin); });
-               
-               // Scan for changes to the height of the body (dom element removal).
+               // Update pin status (if applicable) every second.
                setInterval(function() {
-                  if(isResizable())
-                     update(obj, pin);
-                     data.body = $('body').height();
+                  update(obj, pin);
                }, 1000);
             } else {
                // The pin already exists, so lets select the existing pin.
@@ -125,6 +123,8 @@
           * Updates the positions of each scroll pin.  If the object of the scroll
           * pin is no longer within the visible dom, the corresponding pin is removed.
           * 
+          * If the window size is greater than that of the body, hide all pins.
+          * 
           * @param jQuery object - Object of the scroll pin
           * @param jQuery pin - Pin object
           * @return void
@@ -132,8 +132,15 @@
          function update(object, pin) {
             if(object.parents().length == 0)
                setTimeout(function() { pin.remove(); }, 1000);
+            else if(object.css('display') == 'none')
+               pin.fadeOut();
             else
                setTimeout(function() { pin.animate({top: calc(object, pin)}); }, 1000);
+               
+            if(!isPinable())
+               pin.fadeOut('fast');
+            else if(isPinable() && object.css('display') != 'none')
+               pin.fadeIn();
          }
          
          /**
@@ -148,12 +155,12 @@
          }
          
          /**
-          * Returns true if the pin positions need to be adjusted.
+          * Returns true if the any of the pins should be showing
           * 
           * @return boolean
           */
-         function isResizable() {
-            return $('body').height() != data.body;
+         function isPinable() {
+            return $('body').height() > $(window).height();
          }
       }
    });
