@@ -27,11 +27,42 @@
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+    .demo-break { display: block; height: 200px; }
+    .scrolltab-item {
+      background-color: #333;
+      color: #eee;
+      width: 100px;
+      padding: 5px;
+    }
   </style>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("jquery", "1.4");
+  </script>
+  <script type="text/javascript" src="https://raw.github.com/cjsaylor/Scrolltab/master/js/jquery.scrolltab.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+         $('h2')
+            .click(function() {$(this).slideUp(); })
+            .each(function(index) {
+              $this = $(this);
+              $this.scrolltab({
+               hoverin: function() { 
+                  $(this).stop().animate({width: '200px'}, 500);
+               }, 
+               hoverout: function() { 
+                  $(this).stop().animate({width: '100px'}, 500);
+               },
+               classname: 'scrolltab-item',
+               title: $this.attr('title')
+              });
+            });
+      });
+   </script>
 </head>
 
 <body>
-  <a href="http://github.com/cjsaylor/Scrolltab"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  <a href="http://github.com/cjsaylor/Scrolltab"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: -2;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
   <div id="container">
 
@@ -48,18 +79,50 @@
     <div class="description">
       jQuery plugin to add tabs visually associated to their position relative to the scroll bar.
     </div>
+<h2 title="Examples">Examples</h2>
+<pre>
+  	// Enables a pin with the default classname
+	$('<dom object>').scrolltab();
 
-    <h2>Dependencies</h2>
+	// Changes the classname of the created (or existing) pin
+	$('<dom object>').scrolltab({ classname: 'test' });
+</pre>
+<p>Example for this page:</p>
+<pre>
+ $('h2')
+  .click(function() {$(this).slideUp(); })
+  .each(function(index) {
+    $this = $(this);
+    $this.scrolltab({
+      hoverin: function() { 
+        $(this).stop().animate({width: '200px'}, 500);
+      }, 
+      hoverout: function() { 
+        $(this).stop().animate({width: '100px'}, 500);
+      },
+      classname: 'scrolltab-item',
+      title: $this.attr('title')
+    });
+  });
+</pre>
+<div class="demo-break">&nbsp;</div>
+<h2 title="Demo">Demo</h2>
+<div class="demo-break">&nbsp;</div>
+<a href="example.html">View a demonstration of Scrolltab's dynamic behavior.</a>
+<h2 title="Dependencies">Dependencies</h2>
 <p>jQuery 1.4+</p>
-<h2>License</h2>
+<div class="demo-break">&nbsp;</div>
+<h2 title="License">License</h2>
 <p>MIT</p>
-<h2>Authors</h2>
-<p>cjsaylor (cjsaylor@gmail.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Chris Saylor (cjsaylor@gmail.com)<br/>      </p>
+<div class="demo-break">&nbsp;</div>
+<h2 title="Author">Author</h2>
+<p>Chris Saylor (cjsaylor@gmail.com)</p>
+<div class="demo-break">&nbsp;</div><br/><br/>      </p>
+<h2 title="Contact">Contact</h2>
+<p>Chris Saylor (cjsaylor@gmail.com)</p><br/>      </p>
+<div class="demo-break">&nbsp;</div>
 
-
-    <h2>Download</h2>
+    <h2 title="Download">Download</h2>
     <p>
       You can download this project in either
       <a href="http://github.com/cjsaylor/Scrolltab/zipball/master">zip</a> or
