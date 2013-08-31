@@ -3,7 +3,8 @@ Scrolltab is a jQuery plugin that adds tabs visually associated to their positio
 This enables a developer to attach floating tabs to the scrollbar of the brwoser that will scroll the user to the position indicated by the tab.  This tab is expandable with content within.
 
 ## Demo
-	http://chris-saylor.com/Scrolltab/example.html
+
+http://chris-saylor.com/Scrolltab/example.html
 
 ## Examples
 
