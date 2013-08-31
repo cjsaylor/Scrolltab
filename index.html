@@ -1,99 +1,107 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Scrolltab by cjsaylor</title>
+  </head>
 
-  <title>cjsaylor/Scrolltab @ GitHub</title>
+  <body>
+    <div id="container">
+      <div class="inner">
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #000000; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #000000; }
-    h3 { text-align: center; color: #000000; }
-    a { color: #000000; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+        <header>
+          <h1>Scrolltab</h1>
+          <h2>jQuery plugin to add tabs visually associated to their position relative to the scroll bar.</h2>
+        </header>
 
-<body>
-  <a href="http://github.com/cjsaylor/Scrolltab"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/cjsaylor/Scrolltab/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/cjsaylor/Scrolltab/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/cjsaylor/Scrolltab" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
 
-  <div id="container">
+        <hr>
 
-    <div class="download">
-      <a href="http://github.com/cjsaylor/Scrolltab/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/cjsaylor/Scrolltab/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+        <section id="main_content">
+          <p>Scrolltab is a jQuery plugin that adds tabs visually associated to their position relative to the scroll bar.</p>
+
+<p>This enables a developer to attach floating tabs to the scrollbar of the brwoser that will scroll the user to the position indicated by the tab.  This tab is expandable with content within.</p>
+
+<h2>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h2>
+
+<p><a href="http://chris-saylor.com/Scrolltab/example.html">http://chris-saylor.com/Scrolltab/example.html</a></p>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<div class="highlight"><pre>    <span class="c1">// Enables a pin with the default classname</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;dom object&gt;'</span><span class="p">).</span><span class="nx">scrolltab</span><span class="p">();</span>
+
+    <span class="c1">// Changes the classname of the created (or existing) pin</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;dom object&gt;'</span><span class="p">).</span><span class="nx">scrolltab</span><span class="p">({</span> <span class="nx">classname</span><span class="o">:</span> <span class="s1">'test'</span> <span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<ul>
+<li>
+<code>title</code>: HTML to display within the pin</li>
+<li>
+<code>classname</code>: The classname for the pin to use</li>
+<li>
+<code>mouseenter</code>: function to execute when the mouseenter event fires on this pin</li>
+<li>
+<code>mouseleave</code>: function to execute when the mouseleave event fires on this pin</li>
+<li>
+<code>click</code>: function to execute when the click event fire on this pin</li>
+</ul><h2>
+<a name="build" class="anchor" href="#build"><span class="octicon octicon-link"></span></a>Build</h2>
+
+<p>Scrolltab uses Grunt for linting and building the minified production file.</p>
+
+<h3>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
+
+<ul>
+<li>NodeJS</li>
+</ul><h4>
+<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h4>
+
+<p>Install grunt cli globally:</p>
+
+<p><code>$ npm install -g grunt-cli</code></p>
+
+<p>Install dev dependencies:</p>
+
+<p><code>$ npm install -d</code></p>
+
+<p>Execute lint and build:</p>
+
+<p><code>$ grunt</code></p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This software is protected under the MIT license.</p>
+        </section>
+
+        <footer>
+          Scrolltab is maintained by <a href="https://github.com/cjsaylor">cjsaylor</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-
-    <h1><a href="http://github.com/cjsaylor/Scrolltab">Scrolltab</a>
-      <span class="small">by <a href="http://github.com/cjsaylor">Chris Saylor</a></span></h1>
-
-    <div class="description">
-      jQuery plugin to add tabs visually associated to their position relative to the scroll bar.
-    </div>
-<h2 title="Examples">Examples</h2>
-<pre>
-// Enables a pin with the default classname
-$('p').scrolltab();
-
-// Changes the classname of the created (or existing) pin
-$('p').scrolltab({ classname: 'test' });
-    
-// Change the mouse over event:
-$('p').scrolltab({ hoverin: function() { console.log('hovered!'); }});
-</pre>
-<h2 title="Demo">Demo</h2>
-<a href="example.html">View a demonstration of Scrolltab's dynamic behavior.</a>
-<h2>Options</h2>
-<dl>
-  <dt>Display</dt>
-    <dd>classname - Name of the class you want the pin to acquire</dd>
-    <dd>title - Text to display in the pin</dd>
-  </dt>
-  <dt>Events</dt>
-    <dd>hoverin - function to run on mouse over of the pin</dd>
-    <dd>hoverout - function to run on mouse out of the pin</dd>
-    <dd>click - function to run on click of the pin</dd>
-  </dt>
-</dl>
-<h2 title="Dependencies">Dependencies</h2>
-<p>jQuery 1.4+</p>
-<h2 title="License">License</h2>
-<p>MIT</p>
-    <h2 title="Download">Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/cjsaylor/Scrolltab/zipball/master">zip</a> or
-      <a href="http://github.com/cjsaylor/Scrolltab/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/cjsaylor/Scrolltab</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/cjsaylor/Scrolltab">cjsaylor/Scrolltab</a>
-    </div>
-
-  </div>
-
-  
-</body>
+  </body>
 </html>
