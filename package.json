@@ -1,0 +1,21 @@
+{
+  "name": "jquery.scrolltab",
+  "version": "1.0.0",
+  "description": "jQuery plugin to add tabs visually associated to their position relative to the scroll bar.",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cjsaylor/scrolltab.git"
+  },
+  "author": "Chris Saylor",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "~0.4.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.3.0",
+    "grunt-compare-size": "~0.4.0",
+    "gzip-js": "~0.3.0"
+  }
+}
