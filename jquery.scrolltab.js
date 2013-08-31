@@ -46,7 +46,7 @@
 
     var data = {
       body: 0
-    }
+    };
 
     return this.each(function(index) {
       var obj = $(this);
@@ -98,7 +98,7 @@
            $('html,body').animate({scrollTop: obj.offset().top+"px"}, 1000);
            return false;
         })
-        .css('cursor', 'pointer')
+        .css('cursor', 'pointer');
            
       $.fn.scrolltab.pinInitialDisplay(pin);
        
@@ -106,7 +106,6 @@
       setInterval(function() {
         update(obj, pin);
       }, 1000);
-
     }
 
     /**
@@ -132,7 +131,7 @@
         pin.attr('class', options.classname);
       }
       if(options.title) {
-        pin.html(options.title)
+        pin.html(options.title);
       }
     }
   
@@ -148,9 +147,9 @@
      * @return void
      */
     function update(object, pin) {
-      if(object.parents().length == 0) {
+      if(object.parents().length === 0) {
         setTimeout(function() { pin.remove(); }, 1000);
-      } else if(object.css('display') == 'none') {
+      } else if(object.css('display') === 'none') {
         pin.fadeOut();
       } else {
         setTimeout(function() { pin.animate({top: calc(object, pin)}); }, 1000);
@@ -158,7 +157,7 @@
 
       if(!isPinable()) {
          pin.fadeOut('fast');
-      } else if(isPinable() && object.css('display') != 'none') {
+      } else if(isPinable() && object.css('display') !== 'none') {
         pin.fadeIn();
       }
     }
@@ -172,8 +171,9 @@
      */
     function calc(object, pin) {
       return parseInt(
-        object.offset().top / $('body').height() * $(window).height() + (pin.height() / 2)
-      , 10);
+        object.offset().top / $('body').height() * $(window).height() + (pin.height() / 2), 
+        10
+      );
     }
          
     /**
@@ -185,7 +185,7 @@
       return $('body').height() > $(window).height();
     }
 
-  }
+  };
 
   /**
    * Exposed default options.
@@ -198,7 +198,7 @@
     mouseenter: function(){},
     mouseleave: function(){},
     click: function(){}
-  }
+  };
 
   /**
    * Initial pin display method.
@@ -209,6 +209,6 @@
    */
   $.fn.scrolltab.pinInitialDisplay = function (pin) {
     pin.fadeIn('slow');
-  }
+  };
 
 })(jQuery);
