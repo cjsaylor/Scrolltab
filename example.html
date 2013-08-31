@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
    <title>Scrolltab Demo</title>
    <style>
@@ -41,21 +41,18 @@
       .test5 {height: 400px; background-color: purple; border-top: 3px solid white;}
       .container {width: 960px; margin: 0 auto}
    </style>
-   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-   <script type="text/javascript">
-      google.load("jquery", "1.4");
-   </script>
-   <script type="text/javascript" src="https://raw.github.com/cjsaylor/Scrolltab/master/js/jquery.scrolltab.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script type="text/javascript" src="./js/jquery.scrolltab.js"></script>
    <script type="text/javascript">
       $(document).ready(function() {
          // Have all scroll tabs expand on mouseover and detract on mouseleave
          $('.scrolltab')
             .click(function() {$(this).slideUp(); })
             .scrolltab({
-               hoverin: function() { 
+               mouseenter: function() { 
                   $(this).stop().animate({width: '200px'}, 500);
                }, 
-               hoverout: function() { 
+               mouseleave: function() { 
                   $(this).stop().animate({width: '50px'}, 500);
                } 
             });
