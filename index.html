@@ -55,6 +55,44 @@
 <li>
 <code>click</code>: function to execute when the click event fire on this pin</li>
 </ul><h2>
+<a name="behaviors" class="anchor" href="#behaviors"><span class="octicon octicon-link"></span></a>Behaviors</h2>
+
+<p>The behavior of how the pin displays and hides is customizable by overriding the behavior functions.</p>
+
+<h4>
+<a name="initial-display" class="anchor" href="#initial-display"><span class="octicon octicon-link"></span></a>Initial Display</h4>
+
+<p>When a new pin is created by the <code>.scrolltab()</code> call.</p>
+
+<ul>
+<li>Default behavior: <code>fadeIn('slow')</code>
+</li>
+</ul><pre><code>$.fn.scrolltab.pinInitialDisplay
+</code></pre>
+
+<h4>
+<a name="display-on-update" class="anchor" href="#display-on-update"><span class="octicon octicon-link"></span></a>Display On Update</h4>
+
+<p>If the element the scrollpin was tracking becomes visible again, this will redisplay the pin.</p>
+
+<ul>
+<li>Default behavior: <code>fadeIn('slow')</code>
+</li>
+</ul><pre><code>$.fn.scrolltab.pinDisplay
+</code></pre>
+
+<h4>
+<a name="pin-hide" class="anchor" href="#pin-hide"><span class="octicon octicon-link"></span></a>Pin Hide</h4>
+
+<p>If the element the scrollpin was tracking is hidden from the dom, this will hide the pin.</p>
+
+<ul>
+<li>Default behavior: <code>fadeOut('fast')</code>
+</li>
+</ul><pre><code>$.fn.scrolltab.pinHide
+</code></pre>
+
+<h2>
 <a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
 <div class="highlight"><pre>    <span class="c1">// Enables a pin with the default classname</span>
