@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Scrolltab Demo</title>
    <style>
-   * {padding: 0; margin: 0}
+      * {padding: 0; margin: 0}
+      .scrolltab-item {
+         padding: 5px 20px;
+         color: white;
+         -webkit-border-top-left-radius: 10px;
+         -webkit-border-bottom-left-radius: 10px;
+         -moz-border-radius-topleft: 10px;
+         -moz-border-radius-bottomleft: 10px;
+         border-top-left-radius: 10px;
+         border-bottom-left-radius: 10px;
+      }
       .scrolltab-item {
          width: 50px;
          height: 20px;
@@ -32,19 +44,23 @@
          border-right: none;
          background-color: yellow;
       }
-      body {background-color: #ccc}
-      #options {position: fixed; left: 5px; top: 0; background-color: white; border: 1px solid black; padding: 20px; }
-      .test1 {height: 200px; background-color: blue; }
-      .test2 {height: 2000px; background-color: green; }
-      .test3 {height: 900px; background-color: purple; }
-      .test4 {height: 300px; background-color: yellow; }
-      .test5 {height: 400px; background-color: purple; border-top: 3px solid white;}
-      .container {width: 960px; margin: 0 auto}
+      body { background-color: #e7e7e7}
+      .scrolltab { padding: 20px; }
+      #header h1 { padding: 10px 0;}
+      #options { position: fixed; left: 5px; top: 60px; background-color: white; border: 1px solid black; padding: 20px; }
+      .test1 { height: 200px; background-color: blue; }
+      .test2 { height: 2000px; background-color: green; }
+      .test3 { height: 900px; background-color: purple; }
+      .test4 { height: 300px; background-color: yellow; }
+      .test5 { height: 400px; background-color: purple; border-top: 3px solid white; color: white; }
+      .container { width: 960px; margin: 0 auto; }
    </style>
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
    <script type="text/javascript" src="jquery.scrolltab.js"></script>
    <script type="text/javascript">
       $(document).ready(function() {
+         var boxCount = 0;
+
          // Have all scroll tabs expand on mouseover and detract on mouseleave
          $('.scrolltab')
             .click(function() {$(this).slideUp(); })
@@ -57,21 +73,37 @@
                } 
             });
          // Change three of the pins to a specific classname (instead of the default)
-         $('.test2').scrolltab({classname: 'scrolltab-item1', title: 'Green'});
-         $('.test3').scrolltab({classname: 'scrolltab-item2'});
-         $('.test4').scrolltab({classname: 'scrolltab-item3'});
+         $('.test2').scrolltab({classname: 'scrolltab-item1 scrolltab-item'});
+         $('.test3').scrolltab({classname: 'scrolltab-item2 scrolltab-item'});
+         $('.test4').scrolltab({classname: 'scrolltab-item3 scrolltab-item'});
+
+         // Change all future created tabs
+         $.fn.scrolltab.defaults = $.extend($.fn.scrolltab.defaults, {
+            mouseenter: function() { 
+               $(this).stop().animate({width: '200px'}, 500);
+            }, 
+            mouseleave: function() { 
+               $(this).stop().animate({width: '50px'}, 500);
+            }
+         });
          
          // Options
-         $('#box-add').click(function() {
-            $('.container').append('<div class="scrolltab test5"/>');
-            $('.test5')
-               .click(function() {$(this).slideUp();})
-               .scrolltab({classname: 'scrolltab-item2', title: 'newbox'});
+         $('#box-add').on('click', function(e) {
+            e.preventDefault();
+            var newboxTitle = 'Box ' + ++boxCount;
+            var $newBox = $('<div class="scrolltab test5"/>');
+            $newBox.append('<h4>' + newboxTitle + '</h4>');
+
+            $('.container').append($newBox);
+            $newBox
+               .click(function() { $(this).slideUp(); })
+               .scrolltab({classname: 'scrolltab-item2 scrolltab-item', title: newboxTitle});
             return false;
          });
-         $('#box-showall').click(function() {
+
+         $('#box-showall').on('click', function(e) {
+            e.preventDefault();
             $('.scrolltab').slideDown();
-            return false;
          });
       });
    </script>
