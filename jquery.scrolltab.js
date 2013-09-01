@@ -150,15 +150,15 @@
       if(object.parents().length === 0) {
         setTimeout(function() { pin.remove(); }, 1000);
       } else if(object.css('display') === 'none') {
-        pin.fadeOut();
+        $.fn.scrolltab.pinHide(pin);
       } else {
         setTimeout(function() { pin.animate({top: calc(object, pin)}); }, 1000);
       }
 
       if(!isPinable()) {
-         pin.fadeOut('fast');
+        $.fn.scrolltab.pinHide(pin);
       } else if(isPinable() && object.css('display') !== 'none') {
-        pin.fadeIn();
+        $.fn.scrolltab.pinDisplay(pin);
       }
     }
 
@@ -201,14 +201,25 @@
   };
 
   /**
-   * Initial pin display method.
+   * Behavior when a pin needs to be displayed.
    *
-   * Intended for user override if fadein is not optimal for display
+   * This is both the initial display and pin display on update.
+   *
    * @param Object pin jQuery object pin
    * @return void
    */
-  $.fn.scrolltab.pinInitialDisplay = function (pin) {
+  $.fn.scrolltab.pinInitialDisplay = $.fn.scrolltab.pinDisplay = function (pin) {
     pin.fadeIn('slow');
   };
+
+  /**
+   * Behavior when a pin needs to be hidden.
+   *
+   * @param object pin jQuery object pin
+   * @return void
+   */
+  $.fn.scrolltab.pinHide = function (pin) {
+    pin.fadeOut('fast');
+  }
 
 })(jQuery);
