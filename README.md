@@ -14,6 +14,40 @@ http://chris-saylor.com/Scrolltab/example.html
 * `mouseleave`: function to execute when the mouseleave event fires on this pin
 * `click`: function to execute when the click event fire on this pin
 
+## Behaviors
+
+The behavior of how the pin displays and hides is customizable by overriding the behavior functions.
+
+#### Initial Display
+
+When a new pin is created by the `.scrolltab()` call.
+
+* Default behavior: `fadeIn('slow')`
+
+```
+$.fn.scrolltab.pinInitialDisplay
+```
+
+#### Display On Update
+
+If the element the scrollpin was tracking becomes visible again, this will redisplay the pin.
+
+* Default behavior: `fadeIn('slow')`
+
+```
+$.fn.scrolltab.pinDisplay
+```
+
+#### Pin Hide
+
+If the element the scrollpin was tracking is hidden from the dom, this will hide the pin.
+
+* Default behavior: `fadeOut('fast')`
+
+```
+$.fn.scrolltab.pinHide
+```
+
 ## Examples
 
 ```javascript
