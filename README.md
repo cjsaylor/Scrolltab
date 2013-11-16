@@ -14,6 +14,14 @@ http://chris-saylor.com/Scrolltab/example.html
 * `mouseleave`: function to execute when the mouseleave event fires on this pin
 * `click`: function to execute when the click event fire on this pin
 
+## Setting Options via `data` attributes
+
+You can set the title and classname of the pin via data attributes on the object.
+
+```html
+<h4 class="scrolltab" data-st-title="Pin Title" data-st-classname="custom-pin-class">Title</h4>
+```
+
 ## Behaviors
 
 The behavior of how the pin displays and hides is customizable by overriding the behavior functions.

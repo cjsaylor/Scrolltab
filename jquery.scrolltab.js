@@ -75,8 +75,8 @@
       // Create the pin and position
       var pin = $('<div/>')
         .attr('id', id)
-        .attr('class', settings.classname)
-        .html(settings.title)
+        .attr('class', obj.data('st-classname') || settings.classname)
+        .html(obj.data('st-title') || settings.title)
         .css('position', 'fixed')
         .css('right', 0)
         .bind('mouseenter.scrolltab', settings.mouseenter)
