@@ -221,6 +221,6 @@
    */
   $.fn.scrolltab.pinHide = function (pin) {
     pin.fadeOut('fast');
-  }
+  };
 
 })(jQuery);
