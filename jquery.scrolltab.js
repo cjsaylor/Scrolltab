@@ -1,5 +1,5 @@
 /**
- * jQuery Scrolltab Plugin v1.0.2
+ * jQuery Scrolltab Plugin v1.0.3
  * https://github.com/cjsaylor/scrolltab
  * 
  * Options
@@ -45,7 +45,8 @@
     var settings = $.extend({}, $.fn.scrolltab.defaults, options);
 
     var data = {
-      body: 0
+      body: 0,
+      pinId: 1
     };
 
     return this.each(function(index) {
@@ -70,13 +71,13 @@
       obj.data('scrolltab_enabled', true);
       data.body = $('body').height();
 
-      var id = 'scrolltab_' + Math.floor(Math.random() * 10001);
+      var id = 'scrolltab_' + data.pinId++;
 
       // Create the pin and position
       var pin = $('<div/>')
         .attr('id', id)
-        .attr('class', settings.classname)
-        .html(settings.title)
+        .attr('class', obj.data('st-classname') || settings.classname)
+        .html(obj.data('st-title') || settings.title)
         .css('position', 'fixed')
         .css('right', 0)
         .bind('mouseenter.scrolltab', settings.mouseenter)
@@ -220,6 +221,6 @@
    */
   $.fn.scrolltab.pinHide = function (pin) {
     pin.fadeOut('fast');
-  }
+  };
 
 })(jQuery);
