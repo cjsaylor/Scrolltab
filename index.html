@@ -55,6 +55,14 @@
 <li>
 <code>click</code>: function to execute when the click event fire on this pin</li>
 </ul><h2>
+<a name="setting-options-via-data-attributes" class="anchor" href="#setting-options-via-data-attributes"><span class="octicon octicon-link"></span></a>Setting Options via <code>data</code> attributes</h2>
+
+<p>You can set the title and classname of the pin via data attributes on the object.</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"scrolltab"</span> <span class="na">data-st-title=</span><span class="s">"Pin Title"</span> <span class="na">data-st-classname=</span><span class="s">"custom-pin-class"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h4&gt;</span>
+</pre></div>
+
+<h2>
 <a name="behaviors" class="anchor" href="#behaviors"><span class="octicon octicon-link"></span></a>Behaviors</h2>
 
 <p>The behavior of how the pin displays and hides is customizable by overriding the behavior functions.</p>
@@ -95,15 +103,15 @@
 <h2>
 <a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
-<div class="highlight"><pre>    <span class="c1">// Enables a pin with the default classname</span>
+<div class="highlight highlight-javascript"><pre>    <span class="c1">// Enables a pin with the default classname</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;dom object&gt;'</span><span class="p">).</span><span class="nx">scrolltab</span><span class="p">();</span>
 </pre></div>
 
-<div class="highlight"><pre>    <span class="c1">// Changes the classname of the created (or existing) pin</span>
+<div class="highlight highlight-javascript"><pre>    <span class="c1">// Changes the classname of the created (or existing) pin</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;dom object&gt;'</span><span class="p">).</span><span class="nx">scrolltab</span><span class="p">({</span> <span class="nx">classname</span><span class="o">:</span> <span class="s1">'test'</span> <span class="p">});</span>
 </pre></div>
 
-<div class="highlight"><pre>    <span class="c1">// Modifies the behavior of the click event on the pin</span>
+<div class="highlight highlight-javascript"><pre>    <span class="c1">// Modifies the behavior of the click event on the pin</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;dom object'</span><span class="p">).</span><span class="nx">scrolltab</span><span class="p">({</span>
         <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
@@ -112,7 +120,7 @@
     <span class="p">});</span>
 </pre></div>
 
-<div class="highlight"><pre>    <span class="c1">// Modify the initial behavior of pins showing on page load</span>
+<div class="highlight highlight-javascript"><pre>    <span class="c1">// Modify the initial behavior of pins showing on page load</span>
     <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">scrolltab</span><span class="p">.</span><span class="nx">pinInitialDisplay</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pin</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// I don't want the fancy fadein affect.</span>
         <span class="nx">pin</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
@@ -120,7 +128,7 @@
     <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;dom object&gt;'</span><span class="p">).</span><span class="nx">scrolltab</span><span class="p">();</span>
 </pre></div>
 
-<div class="highlight"><pre>    <span class="c1">// Modify the default attributes of all pins created now on</span>
+<div class="highlight highlight-javascript"><pre>    <span class="c1">// Modify the default attributes of all pins created now on</span>
     <span class="c1">// In this example, I want all pins to have a click event function</span>
     <span class="c1">// callback attached.</span>
     <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">scrolltab</span><span class="p">.</span><span class="k">default</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">scrolltab</span><span class="p">.</span><span class="k">default</span><span class="p">,</span> <span class="p">{</span>
@@ -142,17 +150,17 @@
 
 <p>Install grunt cli globally:</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>npm install -g grunt-cli
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>npm install -g grunt-cli
 </pre></div>
 
 <p>Install dev dependencies:</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>npm install -d
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>npm install -d
 </pre></div>
 
 <p>Execute lint and build:</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>grunt
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>grunt
 </pre></div>
 
 <h2>
