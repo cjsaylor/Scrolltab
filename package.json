@@ -1,6 +1,6 @@
 {
   "name": "jquery.scrolltab",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "jQuery plugin to add tabs visually associated to their position relative to the scroll bar.",
   "main": "Gruntfile.js",
   "repository": {

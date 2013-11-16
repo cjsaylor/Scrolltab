@@ -1,5 +1,5 @@
 /**
- * jQuery Scrolltab Plugin v1.0.2
+ * jQuery Scrolltab Plugin v1.0.3
  * https://github.com/cjsaylor/scrolltab
  * 
  * Options
