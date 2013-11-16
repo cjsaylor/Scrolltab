@@ -45,7 +45,8 @@
     var settings = $.extend({}, $.fn.scrolltab.defaults, options);
 
     var data = {
-      body: 0
+      body: 0,
+      pinId: 1
     };
 
     return this.each(function(index) {
@@ -70,7 +71,7 @@
       obj.data('scrolltab_enabled', true);
       data.body = $('body').height();
 
-      var id = 'scrolltab_' + Math.floor(Math.random() * 10001);
+      var id = 'scrolltab_' + data.pinId++;
 
       // Create the pin and position
       var pin = $('<div/>')
