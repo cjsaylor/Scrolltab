@@ -49,7 +49,7 @@
       pinId: 1
     };
 
-    return this.each(function(index) {
+    return this.each(function() {
       var obj = $(this);
 
       // Detect if this object has already had a pin created
