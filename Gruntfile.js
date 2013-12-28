@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 		},
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> v<%= pkg.version %> | <%= pkg.license %> */\n',
+				banner: '/*! <%= pkg.name %> v<%= pkg.version %> | <%= pkg.license %> | http://chris-saylor.com/Scrolltab */\n',
 				compress: true
 			},
 			build: {
