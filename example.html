@@ -72,6 +72,7 @@
                   $(this).stop().animate({width: '50px'}, 500);
                } 
             });
+
          // Change three of the pins to a specific classname (instead of the default)
          $('.test2').scrolltab({classname: 'scrolltab-item1 scrolltab-item'});
          $('.test3').scrolltab({classname: 'scrolltab-item2 scrolltab-item'});
@@ -87,7 +88,7 @@
             }
          });
          
-         // Options
+         // Demo Options
          $('#box-add').on('click', function(e) {
             e.preventDefault();
             var newboxTitle = 'Box ' + ++boxCount;
