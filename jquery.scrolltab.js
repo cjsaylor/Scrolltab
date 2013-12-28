@@ -18,7 +18,7 @@
  * and the size of the window.
  * 
  * ---------------------------------------------------------------------
- * Copyright (c) 2010 - 2013 Chris Saylor
+ * Copyright (c) 2010 - 2014 Chris Saylor
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
