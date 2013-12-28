@@ -54,21 +54,20 @@
 
       // Detect if this object has already had a pin created
       if(!obj.data('scrolltab_enabled')) {
-        initializePin(obj);
+        initializePin.call(obj);
       } else {
         // The pin already exists, so lets select the existing pin.
-        updateExistingPin(obj);
+        updateExistingPin.call(obj);
       }
     });
 
     /**
      * Create a pin associated with the subject object.
      *
-     * @param object obj
      * @return void
      */
-    function initializePin(obj) {
-      obj.data('scrolltab_enabled', true);
+    function initializePin() {
+      this.data('scrolltab_enabled', true);
       data.body = $('body').height();
 
       var id = 'scrolltab_' + data.pinId++;
@@ -76,37 +75,37 @@
       // Create the pin and position
       var pin = $('<div/>')
         .attr('id', id)
-        .attr('class', obj.data('st-classname') || settings.classname)
-        .html(obj.data('st-title') || settings.title)
+        .attr('class', this.data('st-classname') || settings.classname)
+        .html(this.data('st-title') || settings.title)
         .css('position', 'fixed')
         .css('right', 0)
         .bind('mouseenter.scrolltab', settings.mouseenter)
         .bind('mouseleave.scrolltab', settings.mouseleave)
         .bind('click.scrolltab', settings.click);
 
-      obj.data('scrolltab_id', id);
+      this.data('scrolltab_id', id);
               
       // Append to dom so we can calculate object height.
       $('body').append(pin);
            
       // Calculate scroll bar position for this element
-      var pos = calc(obj, pin);
+      var pos = calc.call(this, pin);
 
       // Attach click action (scroll)
       pin.css('top', pos)
         .hide()
-        .bind('click.scrolltab', function() {
-           $('html,body').animate({scrollTop: obj.offset().top+"px"}, 1000);
-           return false;
-        })
+        .bind('click.scrolltab', function(e) {
+          e.preventDefault();
+          $('html,body').animate({scrollTop: this.offset().top+"px"}, 1000);
+        }.bind(this))
         .css('cursor', 'pointer');
            
-      $.fn.scrolltab.pinInitialDisplay(pin);
+      $.fn.scrolltab.pinInitialDisplay.call(this, pin);
        
       // Update pin status (if applicable) every second.
       setInterval(function() {
-        update(obj, pin);
-      }, 1000);
+        update.call(this, pin);
+      }.bind(this), 1000);
     }
 
     /**
@@ -115,8 +114,8 @@
      * @param object obj
      * @return void
      */
-    function updateExistingPin(obj) {
-      var pin = $('#' + obj.data('scrolltab_id'));
+    function updateExistingPin() {
+      var pin = $('#' + this.data('scrolltab_id'));
 
       // Only remap what has been set in the options.
       if(options.mouseenter) {
@@ -143,36 +142,36 @@
      * 
      * If the window size is greater than that of the body, hide all pins.
      * 
-     * @param jQuery object - Object of the scroll pin
      * @param jQuery pin - Pin object
      * @return void
      */
-    function update(object, pin) {
-      if(object.parents().length === 0) {
+    function update(pin) {
+      if(this.parents().length === 0) {
         setTimeout(function() { pin.remove(); }, 1000);
-      } else if(object.css('display') === 'none') {
-        $.fn.scrolltab.pinHide(pin);
+      } else if(this.css('display') === 'none') {
+        $.fn.scrolltab.pinHide.call(this, pin);
       } else {
-        setTimeout(function() { pin.animate({top: calc(object, pin)}); }, 1000);
+        setTimeout(function() {
+          pin.animate({top: calc.call(this, pin)}); 
+        }.bind(this), 1000);
       }
 
       if(!isPinable()) {
-        $.fn.scrolltab.pinHide(pin);
-      } else if(isPinable() && object.css('display') !== 'none') {
-        $.fn.scrolltab.pinDisplay(pin);
+        $.fn.scrolltab.pinHide.call(this, pin);
+      } else if(isPinable() && this.css('display') !== 'none') {
+        $.fn.scrolltab.pinDisplay.call(this, pin);
       }
     }
 
     /**
      * Calculates the vertical position of the main object to pin for scrolling.
-     * 
-     * @param jQuery object - Object of the scroll pin
+     *
      * @param jQuery pin - Pin object
      * @return float Vertical position result
      */
-    function calc(object, pin) {
+    function calc(pin) {
       return parseInt(
-        object.offset().top / $('body').height() * $(window).height() + (pin.height() / 2), 
+        this.offset().top / $('body').height() * $(window).height() + (pin.height() / 2), 
         10
       );
     }
