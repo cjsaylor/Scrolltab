@@ -1,0 +1,26 @@
+{
+  "name": "jquery-scrolltab",
+  "version": "1.0.5",
+  "homepage": "http://chris-saylor.com/Scrolltab/",
+  "authors": [
+    "Chris Saylor <cjsaylor@gmail.com>"
+  ],
+  "description": "jQuery plugin to add tabs visually associated to their position relative to the scroll bar.",
+  "main": "jquery.scrolltab.js",
+  "keywords": [
+    "scroll",
+    "scrollspy",
+    "animation"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">= 1.7.1"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
