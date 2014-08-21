@@ -10,6 +10,7 @@
 	"noarg": true,
 	"undef": true,
 	"globals": {
-		"jQuery": true
+		"jQuery": true,
+		"define": true
 	}
 }
