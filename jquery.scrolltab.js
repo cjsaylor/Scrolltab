@@ -38,8 +38,13 @@
  * THE SOFTWARE.
  */
 
-(function($) {
-
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery'], factory);
+  } else {
+    factory(jQuery);
+  }
+}(function($) {
   $.fn.scrolltab = function(options) {
 
     var settings = $.extend({}, $.fn.scrolltab.defaults, options);
@@ -221,5 +226,4 @@
   $.fn.scrolltab.pinHide = function (pin) {
     pin.fadeOut('fast');
   };
-
-})(jQuery);
+}));
