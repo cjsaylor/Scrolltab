@@ -6,6 +6,18 @@ This enables a developer to attach floating tabs to the scrollbar of the brwoser
 
 http://chris-saylor.com/Scrolltab/example.html
 
+## Install
+
+There are two ways of installing:
+
+1. Bower
+
+```bower install jquery-scrolltab```
+
+2. Download
+
+You can install traditionally by downloading the [minified version](https://github.com/cjsaylor/Scrolltab/releases/latest).
+
 ## Options
 
 * `title`: HTML to display within the pin
