@@ -10,13 +10,9 @@ http://chris-saylor.com/Scrolltab/example.html
 
 There are two ways of installing:
 
-1. Bower
+1. Bower - ```bower install jquery-scrolltab```
 
-```bower install jquery-scrolltab```
-
-2. Download
-
-You can install traditionally by downloading the [minified version](https://github.com/cjsaylor/Scrolltab/releases/latest).
+2. Download - You can install traditionally by downloading the [minified version](https://github.com/cjsaylor/Scrolltab/releases/latest).
 
 ## Options
 
